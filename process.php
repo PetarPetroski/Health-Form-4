@@ -1,32 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require 'connect.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House of Health Form</title>
-    <link rel="stylesheet" href="styles.css">
+session_start();
 
-</head>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $receptionistID = $_POST["identification"];
+    $selectedTransaction = $_POST["transaction"];
 
-<body>
-    <div class="container">
+    if ($selectedTransaction == "Search A Receptionist’s Account") {
+        $query = $query = "SELECT
+            Receptionists.ReceptionistID,
+            Receptionists.FirstName,
+            Receptionists.LastName,
+            Receptionists.Password,
+            Receptionists.PhoneNumber,
+            Receptionists.EmailAddress,
+            MedicalRecords.PatientID,
+            MedicalRecords.DateOfBirth,
+            MedicalRecords.Age,
+            MedicalRecords.Address,
+            MedicalRecords.PhoneNumber AS MedicalRecordsPhoneNumber,
+            MedicalRecords.ShotsGiven,
+            MedicalRecords.Illnesses,
+            Patients.FirstName AS PatientFirstName,
+            Patients.LastName AS PatientLastName,
+            AppointmentsProcedures.AppointmentDate,
+            AppointmentsProcedures.AppointmentType,
+            AppointmentsProcedures.ProcedureDate,
+            AppointmentsProcedures.ProcedureType,
+            AppointmentsProcedures.DoctorsName
+        FROM
+            Receptionists
+        JOIN Patients ON Receptionists.ReceptionistID = Patients.receptionist_id
+        LEFT JOIN MedicalRecords ON Patients.PatientID = MedicalRecords.PatientID
+        LEFT JOIN AppointmentsProcedures ON MedicalRecords.PatientID = AppointmentsProcedures.PatientID
+        WHERE
+            Receptionists.ReceptionistID = $receptionistID;";
+        $result = mysqli_query($con, $query);
 
-        <h1>
-            House of Health Form
-        </h1>
-
-
-        <?php
-        require 'connect.php';
-        ?>
-        <section class="buttons">
-            <button id="receptionistsButton">Doctor's Receptionist DB</button>
-            <button id="medicalRecordsButton">Patient Information DB</button>
-        </section>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-
-</html>
+        if ($result->num_rows > 0) {
+            $_SESSION["identification"] = $receptionistID;
+            header("Location: script2.php");
+            exit();
+        } else {
+            echo '<script>alert("STUDENT ID NOT FOUND. Please re-enter");';
+            echo 'window.location.href = "index.php";</script>';
+        }
+    }
+    mysqli_close($con);
+}
+?>
