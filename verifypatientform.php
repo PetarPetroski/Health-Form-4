@@ -6,6 +6,7 @@ if (isset($_GET['receptionistID'])) {
     $_SESSION['identification'] = $_GET['receptionistID'];
 }
 
+// rest of your PHP code...
 ?>
 
 <!DOCTYPE html>
@@ -22,14 +23,15 @@ if (isset($_GET['receptionistID'])) {
     <?php include 'navigation.php'; ?>
 
     <div class="container">
-        <h1>House of Health New Patient Form</h1>
-        <form id="newPatient" name="newPatient" action="newpatient.php" method="post" onsubmit="return validate()">
+        <h1>House of Health Verify Patient Form</h1>
+        <form id="verifyPatient" name="verifyPatient" action="verifypatient.php" method="post"
+            onsubmit="return validate()">
             <div class="formgrid">
                 <label class="grid-item" for="first">Patient's First Name:</label>
-                <input class="grid-item" type="text" id="patientfirst" name="patientfirst" placeholder="Ex: John">
+                <input class="grid-item" type="text" id="first" name="first" placeholder="Ex: John">
                 <p class="grid-item">REQUIRED</p>
                 <label class="grid-item" for="last">Patient's Last Name:</label>
-                <input class="grid-item" type="text" id="patientlast" name="patientlast" placeholder="Ex: Petroski">
+                <input class="grid-item" type="text" id="last" name="last" placeholder="Ex: Smith">
                 <p class="grid-item">REQUIRED</p>
                 <label class="grid-item" for="patientid">Patient's ID Number:</label>
                 <input class="grid-item" type="number" id="patientid" name="patientid" placeholder="Ex: 1">

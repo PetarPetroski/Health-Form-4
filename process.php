@@ -52,13 +52,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: updatepatientform.php");
         exit();
     } else if ($selectedTransaction == "Schedule An Appointment") {
-        // Add code for scheduling an appointment if needed
+        $_SESSION["identification"] = $receptionistID;
+        header("Location: verifypatientform.php");
+        exit();
     } else if ($selectedTransaction == "Cancel Appointment") {
-        // Add code for canceling an appointment if needed
+        $_SESSION["identification"] = $receptionistID;
+        header("Location: cancelappointmentform.php");
+        exit();
     } else if ($selectedTransaction == "Schedule A Procedure") {
-        // Add code for scheduling a procedure if needed
+        $_SESSION["identification"] = $receptionistID;
+        header("Location: scheduleprocedureform.php");
+        exit();
     } else if ($selectedTransaction == "Cancel Procedure") {
-        // Add code for canceling a procedure if needed
+        $_SESSION["identification"] = $receptionistID;
+        header("Location: cancelprocedureform.php");
+        exit();
     } else if ($selectedTransaction == "Create New Patient Account") {
         $_SESSION["identification"] = $receptionistID;
         header("Location: newpatientform.php");

@@ -6,6 +6,7 @@ if (isset($_GET['receptionistID'])) {
     $_SESSION['identification'] = $_GET['receptionistID'];
 }
 
+// rest of your PHP code...
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ if (isset($_GET['receptionistID'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House of Health Form</title>
+    <title>House of Health Create Appointment Form</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -22,20 +23,21 @@ if (isset($_GET['receptionistID'])) {
     <?php include 'navigation.php'; ?>
 
     <div class="container">
-        <h1>House of Health New Patient Form</h1>
-        <form id="newPatient" name="newPatient" action="newpatient.php" method="post" onsubmit="return validate()">
+        <h1>House of Health Form</h1>
+        <form id="createAppointment" name="createAppointment" action="createappointment.php" method="post"
+            onsubmit="return validate()">
             <div class="formgrid">
-                <label class="grid-item" for="first">Patient's First Name:</label>
-                <input class="grid-item" type="text" id="patientfirst" name="patientfirst" placeholder="Ex: John">
+                <label class="grid-item" for="aptdate">Appointment Date:</label>
+                <input class="grid-item" type="text" id="aptdate" name="aptdate" placeholder="Ex: November 5, 2023">
                 <p class="grid-item">REQUIRED</p>
-                <label class="grid-item" for="last">Patient's Last Name:</label>
-                <input class="grid-item" type="text" id="patientlast" name="patientlast" placeholder="Ex: Petroski">
+                <label class="grid-item" for="apttype">Appointment Type:</label>
+                <input class="grid-item" type="text" id="apttype" name="apttype" placeholder="Ex: Well Visit">
                 <p class="grid-item">REQUIRED</p>
-                <label class="grid-item" for="patientid">Patient's ID Number:</label>
-                <input class="grid-item" type="number" id="patientid" name="patientid" placeholder="Ex: 1">
+                <label class="grid-item" for="doctorid">Doctor ID:</label>
+                <input class="grid-item" type="number" id="doctorid" name="doctorid" placeholder="Ex: 1">
                 <p class="grid-item">REQUIRED</p>
-                <input type="hidden" name="receptionistID" value="<?php echo $receptionistID; ?>">
                 <input type="hidden" name="receptionistID" value="<?php echo $_SESSION['identification']; ?>">
+                <input type="hidden" name="patientid" value="<?php echo $_GET['patientid']; ?>">
 
             </div>
             <div class="bottom-buttons">
