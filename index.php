@@ -14,7 +14,7 @@
         <h1>
             House of Health Form
         </h1>
-        <form id="healthForm" name="healthForm" action="process.php" method="post" onsubmit="return validate()">
+        <form id="healthForm" name="healthForm" action="process.php" method="post">
             <div class="formgrid">
                 <label class="grid-item" for="first">First Name:</label>
                 <input class="grid-item" type="text" id="first" name="first" placeholder="Ex: John">

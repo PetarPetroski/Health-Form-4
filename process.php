@@ -43,9 +43,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: script2.php");
             exit();
         } else {
-            echo '<script>alert("STUDENT ID NOT FOUND. Please re-enter");';
+            echo '<script>alert("RECEPTIONIST NOT FOUND. Please re-enter");';
             echo 'window.location.href = "index.php";</script>';
         }
+
+    } else if ($selectedTransaction == "Update a Patient’s Record") {
+        $_SESSION["identification"] = $receptionistID;
+        header("Location: updatepatientform.php");
+        exit();
+    } else if ($selectedTransaction == "Schedule An Appointment") {
+        // Add code for scheduling an appointment if needed
+    } else if ($selectedTransaction == "Cancel Appointment") {
+        // Add code for canceling an appointment if needed
+    } else if ($selectedTransaction == "Schedule A Procedure") {
+        // Add code for scheduling a procedure if needed
+    } else if ($selectedTransaction == "Cancel Procedure") {
+        // Add code for canceling a procedure if needed
+    } else if ($selectedTransaction == "Create New Patient Account") {
+        $_SESSION["identification"] = $receptionistID;
+        header("Location: newpatientform.php");
+        exit();
     }
     mysqli_close($con);
 }

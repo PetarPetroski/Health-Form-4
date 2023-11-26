@@ -12,7 +12,7 @@ function validate() {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{1,16}$/;
     const idRegex = /^\d{1,2}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{3,5}$/;
-    const phoneRegex = /^\d{3}[-\s]\d{3}[-\s]\d{4}$/;
+    //const phoneRegex = /^\d{3}[-\s]\d{3}[-\s]\d{4}$/;
 
     let errorMessage = null;
 
@@ -52,19 +52,22 @@ function validate() {
     }
 
     if (errorMessage) {
+        console.log(errorMessage);
         alert(errorMessage);
         return false;
 
     } else {
-        return true
+        console.log("Hello");
+        return true;
     }
 }
 
 
 
 document.getElementById("healthForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
-    validate(); // Call your validation function
+    if (!validate()) {
+        event.preventDefault(); // Prevent the default form submission
+    }// Call your validation function
 });
 document.getElementById("confirmation").addEventListener("change", function () {
     const emailRequiredMessage = document.getElementById("email-required");
