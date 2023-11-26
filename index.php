@@ -44,8 +44,8 @@
                 <select name="transaction" id="transaction">
                     <option value="Search A Receptionist’s Account">Search A Receptionist’s Account</option>
                     <option value="Update a Patient’s Record">Update a Patient’s Record</option>
-                    <option value="Schedule An Appointment">Book Appointment</option>
-                    <option value="Cancel Appointment">Schedule An Appointment</option>
+                    <option value="Schedule An Appointment">Schedule An Appointment</option>
+                    <option value="Cancel Appointment">Cancel An Appointment</option>
                     <option value="Schedule A Procedure">Schedule A Procedure</option>
                     <option value="Cancel Procedure">Cancel Procedure</option>
                     <option value="Create New Patient Account">Create New Patient Account</option>

@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <?php include 'navigation.php'; ?>
+
     <div class="data-table-container">
         <?php
         session_start();

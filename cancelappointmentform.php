@@ -15,7 +15,7 @@ if (isset($_GET['receptionistID'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House of Health Update Patient Form</title>
+    <title>House of Health Cancel Appointment Form</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -24,20 +24,13 @@ if (isset($_GET['receptionistID'])) {
 
     <div class="container">
         <h1>House of Health Form</h1>
-        <form id="newPatient" name="newPatient" action="updatepatient.php" method="post" onsubmit="return validate()">
+        <form id="cancelAppointment" name="cancelAppointment" action="cancelappointment.php" method="post"
+            onsubmit="return validate()">
             <div class="formgrid">
-                <label class="grid-item" for="shots">Shots:</label>
-                <input class="grid-item" type="text" id="shots" name="shots" placeholder="Ex: MMR">
+                <label class="grid-item" for="aptid">Patient's Appointment ID:</label>
+                <input class="grid-item" type="text" id="aptid" name="aptid" placeholder="Ex: 23">
                 <p class="grid-item">REQUIRED</p>
-                <label class="grid-item" for="illness">Illness:</label>
-                <input class="grid-item" type="text" id="illness" name="illness" placeholder="Ex: Vertigo">
-                <p class="grid-item">REQUIRED</p>
-                <label class="grid-item" for="patientid">Patient's ID Number:</label>
-                <input class="grid-item" type="number" id="patientid" name="patientid" placeholder="Ex: 1">
-                <p class="grid-item">REQUIRED</p>
-                <input type="hidden" name="receptionistID" value="<?php echo $receptionistID; ?>">
                 <input type="hidden" name="receptionistID" value="<?php echo $_SESSION['identification']; ?>">
-
             </div>
             <div class="bottom-buttons">
                 <input type="submit" id="submit" name="submit" value="submit">
