@@ -23,7 +23,7 @@ if (isset($_GET['receptionistID'])) {
     <?php include 'navigation.php'; ?>
 
     <div class="container">
-        <h1>House of Health Form</h1>
+        <h1>House of Health Schedule Procedure Form</h1>
         <form id="scheduleProcedure" name="scheduleProcedure" action="scheduleprocedure.php" method="post"
             onsubmit="return validate()">
             <div class="formgrid">

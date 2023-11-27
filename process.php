@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $selectedTransaction = $_POST["transaction"];
 
     if ($selectedTransaction == "Search A Receptionist’s Account") {
-        $query = $query = "SELECT
+        $query = "SELECT
             Receptionists.ReceptionistID,
             Receptionists.FirstName,
             Receptionists.LastName,
@@ -24,18 +24,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             MedicalRecords.Illnesses,
             Patients.FirstName AS PatientFirstName,
             Patients.LastName AS PatientLastName,
-            AppointmentsProcedures.AppointmentDate,
-            AppointmentsProcedures.AppointmentType,
-            AppointmentsProcedures.ProcedureDate,
-            AppointmentsProcedures.ProcedureType,
-            AppointmentsProcedures.DoctorsName
+            Appointments.AppointmentDate,
+            Appointments.AppointmentType,
+            Procedures.ProcedureDate,
+            Procedures.ProcedureType,
+            Doctors.DoctorName,
+            Doctors.DoctorID
         FROM
             Receptionists
         JOIN Patients ON Receptionists.ReceptionistID = Patients.receptionist_id
         LEFT JOIN MedicalRecords ON Patients.PatientID = MedicalRecords.PatientID
-        LEFT JOIN AppointmentsProcedures ON MedicalRecords.PatientID = AppointmentsProcedures.PatientID
+        LEFT JOIN Appointments ON MedicalRecords.PatientID = Appointments.PatientID
+        LEFT JOIN Procedures ON Appointments.AppointmentID = Procedures.AppointmentID
+        LEFT JOIN Doctors ON Appointments.DoctorsID = Doctors.DoctorID
         WHERE
-            Receptionists.ReceptionistID = $receptionistID;";
+            Receptionists.ReceptionistID = $receptionistID";
+
         $result = mysqli_query($con, $query);
 
         if ($result->num_rows > 0) {

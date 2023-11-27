@@ -17,13 +17,14 @@ if (isset($_GET['receptionistID'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>House of Health Update Patient Form</title>
     <link rel="stylesheet" href="styles.css">
-</head>
 
 <body>
+    </head>
     <?php include 'navigation.php'; ?>
 
+
     <div class="container">
-        <h1>House of Health Form</h1>
+        <h1>House of Health Update Patient Form</h1>
         <form id="newPatient" name="newPatient" action="updatepatient.php" method="post" onsubmit="return validate()">
             <div class="formgrid">
                 <label class="grid-item" for="shots">Shots:</label>
